@@ -1,29 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello Rigo with Vanilla.js</title>
+    <title>Sorting Cards</title>
+    <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
-      integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
       crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
-    <link rel="shortcut icon" href="./4geeks.ico" />
   </head>
   <body>
-    <div class="container-fluid text-center">
-      <h1 class="mt-5">Hello Rigo!</h1>
-      <img src="./rigo-baby.jpg" />
-      <p class="alert alert-warning mt-4">
-        If this text is <b>not</b> centered and <b>yellow</b>, you probably have
-        an error
-      </p>
-      <div class="fixed-bottom p-4">
-        Made with ❤️ by
-        <a href="https://www.4geeksacademy.com">4Geeks Academy</a>
+    <div class="container-fluid">
+      <!--seccion 1-->
+      <section for="original">
+        <h3>Original:</h3>
+        <input type="number" id="inputNumber" />
+        <button id="draw">
+          <i class="fa-solid fa-heart"></i> ♣️ ♦️ ♠️ Draw ♠️ ♦️ ♣️
+          <i class="fa-solid fa-heart"></i></button
+        ><button id="generateCardBtn">
+          <i class="fa-solid fa-heart"></i> ♣️ ♦️ ♠️ Sort ♠️ ♦️ ♣️
+          <i class="fa-solid fa-heart"></i>
+        </button>
+      </section>
+      <div id="cardContainer"></div>
+
+      <!--carta-->
+
+      <div class="container text-center">
+        <!--  <div class="card" id="card">
+          <span class="top-figura"></span>
+          <span class="numero"></span>
+          <span class="bottom-figura"></span>
+        </div> -->
       </div>
+
+      <!--sort boton-->
+      <section for="sort">
+        <h3>Selct sort log:</h3>
+        <div id="log"></div>
+      </section>
     </div>
+
+    <!--Firma-->
+    <div class="fixed-bottom p-4">
+      Made with ❤️ by
+      <a href="https://github.com/sm-nat" target="_blank" class="enlace-natalia"
+        >Natalia Silva Medina</a
+      >
+    </div>
+    <script src="app.js"></script>
   </body>
 </html>
