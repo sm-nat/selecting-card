@@ -1,15 +1,16 @@
-/* eslint-disable */
 import "bootstrap";
 import "./style.css";
 
 window.onload = () => {
   const drawButton = document.getElementById("draw");
+  const sortButton = document.getElementById("sort");
   const inputNumber = document.getElementById("inputNumber");
   const cardContainer = document.getElementById("cardContainer");
+  const sortcontainer = document.getElementById("sortSteps");
+  const restartButton = document.getElementById("restartButton");
 
-  //  número aleatorio
-  let generarRandomNumero = () => {
-    let numbers = [
+  const generarRandomNumero = () => {
+    const numbers = [
       "A",
       "2",
       "3",
@@ -24,30 +25,85 @@ window.onload = () => {
       "Q",
       "K"
     ];
-    let iNumbers = Math.floor(Math.random() * numbers.length);
-    return numbers[iNumbers];
+    return numbers[Math.floor(Math.random() * numbers.length)];
   };
 
-  // pinta aleatoria
-  let generarRandomPinta = () => {
-    let pintas = ["heart", "club", "diamond", "spade"];
-    let iPintas = Math.floor(Math.random() * pintas.length);
-    return pintas[iPintas];
+  const generarRandomPinta = () => {
+    const pintas = ["heart", "club", "diamond", "spade"];
+    return pintas[Math.floor(Math.random() * pintas.length)];
   };
-
-  // Genera una carta aleatoria
+  // crear la carta
+  let cardData = [];
   const generarCarta = () => {
-    cardContainer.innerHTML = ""; // Limpia las cartas existentes
+    cardData = [];
     const numberOfCards = parseInt(inputNumber.value);
 
     for (let i = 0; i < numberOfCards; i++) {
+      const pinta = generarRandomPinta();
+      const number = generarRandomNumero();
+      cardData.push({ pinta, number });
+
       const card = document.createElement("div");
-      card.classList.add("card", generarRandomPinta());
-      card.innerHTML = generarRandomNumero();
+      card.classList.add("card", pinta);
+
+      const numero = document.createElement("div");
+      numero.classList.add("numero");
+      numero.innerText = number;
+
+      card.appendChild(numero);
       cardContainer.appendChild(card);
     }
   };
+  // algoritmo selection
+  const selectionSort = () => {
+    let min = 0;
+    let steps = [];
+    while (min < cardData.length - 1) {
+      for (let i = min + 1; i < cardData.length; i++) {
+        if (cardData[min].number > cardData[i].number) {
+          const aux = cardData[min];
+          cardData[min] = cardData[i];
+          cardData[i] = aux;
+        }
+        steps.push([...cardData]);
+      }
+      min++;
+    }
 
-  //boton
+    cardData = steps[steps.length - 1];
+    //mostrando los pasos
+    steps.forEach((step, index) => {
+      const listItem = document.createElement("li");
+      generarCarta(step, listItem);
+      sortcontainer.appendChild(listItem);
+    });
+  };
+
+  /*  const card = document.createElement("div");
+          card.classList.add("card", cardInfo.pinta);
+      
+          const numero = document.createElement("div");
+          numero.classList.add("numero");
+          numero.innerText = cardInfo.number;
+      
+          card.appendChild(numero);
+          listItem.appendChild(card); */
+  //});
+
+  //};
+  //listItem.textContent = `Step ${index + 1}: [${step
+  //.map(item => item.number)
+  //.join(", ")}]`;
+
+  // restaurar
+  const restart = () => {
+    inputNumber.value = "";
+    cardData = [];
+    cardContainer.innerHTML = "";
+    sortcontainer.innerHTML = "";
+  };
+
   drawButton.addEventListener("click", generarCarta);
+  sortButton.addEventListener("click", selectionSort);
+  restartButton.addEventListener("click", restart);
 };

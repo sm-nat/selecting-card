@@ -21,11 +21,13 @@ body {
   font-size: 30px;
   display: flex;
   justify-content: center;
+  padding-top: 55px;
 }
 .card {
   text-align: center;
   background: white;
   margin: auto;
+  margin-top: 10px;
   height: 200px;
   width: 150px;
   font-size: 8px;
@@ -79,5 +81,11 @@ body {
 #cardContainer {
   display: flex;
   width: 100%;
-  border: 1px solid red;
+}
+#sortcontainer {
+  display: flex;
+  width: 100%;
+}
+#sortcontainer ol {
+  display: inline;
 }
