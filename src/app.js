@@ -49,12 +49,26 @@ window.onload = () => {
       const numero = document.createElement("div");
       numero.classList.add("numero");
       numero.innerText = number;
-
       card.appendChild(numero);
+
+      // card.appendChild(numero);
       cardContainer.appendChild(card);
     }
   };
-  // algoritmo selection
+
+  const dibujarCarta = step => {
+    const { number, pinta } = step;
+    console.log(number);
+    const card = document.createElement("div");
+    console.log(step);
+    card.classList.add("card", pinta);
+
+    const numero = document.createElement("div");
+    numero.classList.add("numero");
+    numero.innerText = number;
+    card.appendChild(numero);
+    return card;
+  }; // algoritmo selection
   const selectionSort = () => {
     let min = 0;
     let steps = [];
@@ -73,8 +87,13 @@ window.onload = () => {
     cardData = steps[steps.length - 1];
     //mostrando los pasos
     steps.forEach((step, index) => {
-      const listItem = document.createElement("li");
-      generarCarta(step, listItem);
+      console.log(step);
+      const listItem = document.createElement("div");
+      for (let i = 0; i < step.length; i++) {
+        const carta = dibujarCarta(step[i]);
+        listItem.appendChild(carta);
+      }
+      //sortcontainer.appendChild(card);
       sortcontainer.appendChild(listItem);
     });
   };
