@@ -14,10 +14,9 @@
     />
   </head>
   <body>
-    <div class="container-fluid">
+    <div class="container-fluid" id="container">
       <!--seccion 1-->
       <section for="original">
-        <h3>Original:</h3>
         <input type="number" id="inputNumber" />
         <button id="draw">
           <i class="fa-solid fa-heart"></i> ♣️ ♦️ ♠️ Draw ♠️ ♦️ ♣️
@@ -26,8 +25,9 @@
           <i class="fa-solid fa-heart"></i> ♣️ ♦️ ♠️ Sort ♠️ ♦️ ♣️
           <i class="fa-solid fa-heart"></i>
         </button>
+        <button id="restartButton">Restart 🔄</button>
+        <h3>Original:</h3>
         <div class="container text-center" id="cardContainer"></div>
-        <button id="restartButton">Restart</button>
       </section>
 
       <!--seccion 2-->
@@ -38,14 +38,7 @@
         </div>
       </section>
     </div>
-    <!--
-<section for="sort">
-  <h3>Selection Sort Log:</h3>
-  <div class="container text-center" id="sortSteps">
-    <ol start="0" class="card-container"></ol>
-  </div>
-</section>
--->
+
     <!--Firma-->
     <div class="fixed-bottom p-4">
       Made with ❤️ by

@@ -3,19 +3,13 @@
 .enlace-natalia {
   color: black;
 }
-
+section {
+  padding-top: 15px;
+}
 body {
   background-color: green;
 }
 
-.container-fluid section {
-  /* display: flex; */
-  align-items: center;
-}
-
-.container-fluid h3 {
-  margin-right: 10px;
-}
 .numero {
   align-items: center;
   font-size: 30px;
@@ -31,11 +25,22 @@ body {
   height: 200px;
   width: 150px;
   font-size: 8px;
-  padding: 8px;
   padding-top: 10px;
   border: 1px solid black;
   border-radius: 5px;
   position: relative;
+}
+#sortcontainer {
+  width: 100%;
+  display: flex;
+  margin-left: 5px;
+}
+#sortSteps {
+  display: flex;
+  width: 100%;
+}
+h3 {
+  padding-top: 25px;
 }
 .card:before,
 .card:after {
@@ -80,14 +85,5 @@ body {
 }
 #cardContainer {
   display: flex;
-  width: 100%;
-}
-#sortcontainer {
-  width: 100%;
-  border: 1px solid red;
-}
-#sortSteps {
-  display: flex;
-  border: 1px solid black;
   width: 100%;
 }

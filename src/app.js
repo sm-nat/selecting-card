@@ -58,7 +58,6 @@ window.onload = () => {
 
   const dibujarCarta = step => {
     const { number, pinta } = step;
-    console.log(number);
     const card = document.createElement("div");
     console.log(step);
     card.classList.add("card", pinta);
@@ -68,7 +67,9 @@ window.onload = () => {
     numero.innerText = number;
     card.appendChild(numero);
     return card;
-  }; // algoritmo selection
+  };
+
+  // Algoritmo selection
   const selectionSort = () => {
     let min = 0;
     let steps = [];
@@ -85,35 +86,28 @@ window.onload = () => {
     }
 
     cardData = steps[steps.length - 1];
-    //mostrando los pasos
+    // Borra el contenido previo de sortcontainer
+    sortcontainer.innerHTML = "";
+
     steps.forEach((step, index) => {
-      console.log(step);
-      const listItem = document.createElement("div");
-      for (let i = 0; i < step.length; i++) {
-        const carta = dibujarCarta(step[i]);
-        listItem.appendChild(carta);
-      }
-      //sortcontainer.appendChild(card);
-      sortcontainer.appendChild(listItem);
+      const stepDiv = document.createElement("div");
+      stepDiv.classList.add("step");
+
+      // Agrega el número de paso
+      const stepNumber = document.createElement("span");
+      stepNumber.classList.add("step-number");
+      stepNumber.textContent = `Step ${index + 1}: `;
+      stepDiv.appendChild(stepNumber);
+
+      // Agrega las cartas
+      step.forEach(cardInfo => {
+        const carta = dibujarCarta(cardInfo);
+        stepDiv.appendChild(carta);
+      });
+
+      sortcontainer.appendChild(stepDiv);
     });
   };
-
-  /*  const card = document.createElement("div");
-          card.classList.add("card", cardInfo.pinta);
-      
-          const numero = document.createElement("div");
-          numero.classList.add("numero");
-          numero.innerText = cardInfo.number;
-      
-          card.appendChild(numero);
-          listItem.appendChild(card); */
-  //});
-
-  //};
-  //listItem.textContent = `Step ${index + 1}: [${step
-  //.map(item => item.number)
-  //.join(", ")}]`;
-
   // restaurar
   const restart = () => {
     inputNumber.value = "";
