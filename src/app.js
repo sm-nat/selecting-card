@@ -10,21 +10,7 @@ window.onload = () => {
   const restartButton = document.getElementById("restartButton");
 
   const generarRandomNumero = () => {
-    const numbers = [
-      "A",
-      "2",
-      "3",
-      "4",
-      "5",
-      "6",
-      "7",
-      "8",
-      "9",
-      "10",
-      "J",
-      "Q",
-      "K"
-    ];
+    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
     return numbers[Math.floor(Math.random() * numbers.length)];
   };
 
@@ -32,7 +18,21 @@ window.onload = () => {
     const pintas = ["heart", "club", "diamond", "spade"];
     return pintas[Math.floor(Math.random() * pintas.length)];
   };
-  // crear la carta
+
+  function changeValue(value) {
+    switch (value) {
+      case 1:
+        return "A";
+      case 11:
+        return "J";
+      case 12:
+        return "Q";
+      case 13:
+        return "K";
+      default:
+        return value;
+    }
+  } // crear la carta
   let cardData = [];
   const generarCarta = () => {
     cardData = [];
@@ -48,7 +48,7 @@ window.onload = () => {
 
       const numero = document.createElement("div");
       numero.classList.add("numero");
-      numero.innerText = number;
+      numero.innerText = changeValue(number);
       card.appendChild(numero);
 
       // card.appendChild(numero);
@@ -64,7 +64,7 @@ window.onload = () => {
 
     const numero = document.createElement("div");
     numero.classList.add("numero");
-    numero.innerText = number;
+    numero.innerText = changeValue(number);
     card.appendChild(numero);
     return card;
   };

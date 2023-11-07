@@ -32,12 +32,16 @@ body {
 }
 #sortcontainer {
   width: 100%;
-  display: flex;
+  /* display: flex; */
   margin-left: 5px;
 }
 #sortSteps {
   display: flex;
+  flex-direction: column;
   width: 100%;
+}
+.step {
+  display: flex;
 }
 h3 {
   padding-top: 25px;
